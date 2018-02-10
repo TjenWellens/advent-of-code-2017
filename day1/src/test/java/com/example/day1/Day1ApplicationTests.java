@@ -37,6 +37,12 @@ public class Day1ApplicationTests {
 		assertThat(result, is(equalTo(4)));
 	}
 
+	@Test
+	public void given_1234_expects_0() throws Exception {
+		int result = captcha("1234");
+		assertThat(result, is(equalTo(0)));
+	}
+
 	private int captcha(String s) {
         final String[] chars = (s + s.substring(0,1)).split("");
         final int[] digits = Arrays.asList(chars).stream().mapToInt(Integer::parseInt).toArray();
