@@ -16,7 +16,7 @@ public class Day2Part2ApplicationTests {
 
     @Before
     public void setUp() throws Exception {
-        checksum = new Checksum();
+        checksum = new DivisibleChecksum();
     }
 
     @Test
@@ -35,7 +35,7 @@ public class Day2Part2ApplicationTests {
     }
 
     @Test
-    public void sheet_returns_18() throws Exception {
+    public void sheet_returns_9() throws Exception {
         String sheet = ""
                 + "5 9 2 8"
                 + "\n"

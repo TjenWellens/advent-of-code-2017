@@ -21,5 +21,7 @@ public class AppRunner implements CommandLineRunner {
         log.debug("CONTENT: " + content);
         final int solution = new Checksum().calculate(content);
         log.info("solution: " + solution);
+        final int solution2 = new DivisibleChecksum().calculate(content);
+        log.info("solution2: " + solution2);
     }
 }
