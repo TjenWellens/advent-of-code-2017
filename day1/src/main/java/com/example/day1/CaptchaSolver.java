@@ -14,10 +14,14 @@ public class CaptchaSolver {
             return 0;
 
         int currentDigit = digits[index];
-        int nextDigit = digits[(index + 1) % digits.length];
+        int nextDigit = digits[compareWithIndex(index, digits.length)];
         if (currentDigit == nextDigit)
             return currentDigit + addIfSameDigitAsBefore(digits, index + 1);
         else
             return addIfSameDigitAsBefore(digits, index + 1);
+    }
+
+    protected int compareWithIndex(int index, int length) {
+        return (index + 1) % length;
     }
 }
