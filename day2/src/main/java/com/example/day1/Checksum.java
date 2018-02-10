@@ -12,10 +12,14 @@ public class Checksum {
         }
 
         String row = sheet;
+        return calculateRow(row);
+    }
+
+    protected int calculateRow(String row) {
         return getIntStream(row).max().getAsInt() - getIntStream(row).min().getAsInt();
     }
 
-    private IntStream getIntStream(String row) {
+    protected IntStream getIntStream(String row) {
         return Arrays.stream(row.split("\\s+")).mapToInt(Integer::parseInt);
     }
 }
