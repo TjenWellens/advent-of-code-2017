@@ -16,6 +16,6 @@ public class Checksum {
     }
 
     private IntStream getIntStream(String row) {
-        return Arrays.stream(row.split(" ")).mapToInt(Integer::parseInt);
+        return Arrays.stream(row.split("\\s+")).mapToInt(Integer::parseInt);
     }
 }
