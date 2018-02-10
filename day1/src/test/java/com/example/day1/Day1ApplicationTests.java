@@ -43,6 +43,12 @@ public class Day1ApplicationTests {
 		assertThat(result, is(equalTo(0)));
 	}
 
+	@Test
+	public void given_91212129_expects_9() throws Exception {
+		int result = captcha("91212129");
+		assertThat(result, is(equalTo(9)));
+	}
+
 	private int captcha(String s) {
         final String[] chars = (s + s.substring(0,1)).split("");
         final int[] digits = Arrays.asList(chars).stream().mapToInt(Integer::parseInt).toArray();
