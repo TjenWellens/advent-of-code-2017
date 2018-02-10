@@ -28,7 +28,7 @@ public class Day1ApplicationTests {
     }
 
     @Test
-	public void given_111_expects_1() throws Exception {
+	public void given_112_expects_1() throws Exception {
 		int result = captchaSolver.solve("112");
 		assertThat(result, is(equalTo(1)));
 	}
