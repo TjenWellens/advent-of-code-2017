@@ -13,3 +13,13 @@
   (if index
     (1+ (apply #'count-steps (next-offset index offsets)))
     0))
+
+(defun file-to-list (path)
+  (with-open-file (input path)
+    (loop for line = (read input nil)
+      while line collect line)))
+
+(defun solution ()
+  (let ((index 0)
+        (offsets (file-to-list "input.txt")))
+    (count-steps index offsets)))
