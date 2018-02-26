@@ -4,14 +4,17 @@
       result
       nil)))
 
-(defun next-offset (index offsets)
+(defun next-value (current-value)
+  (1+ current-value))
+
+(defun next-offset (index offsets &optional (next-value #'next-value))
   (let* ((current-value (nth index offsets)))
     (list (next-index index current-value offsets)
-          (replace (copy-list offsets) (list (1+ current-value)) :start1 index))))
+          (replace (copy-list offsets) (list (funcall next-value current-value)) :start1 index))))
 
-(defun count-steps (index offsets)
+(defun count-steps (index offsets &optional (next-value #'next-value))
   (loop
-    for (i offs) = (list index offsets) then (next-offset i offs)
+    for (i offs) = (list index offsets) then (next-offset i offs next-value)
     while i
     counting i
     do (print i)))
