@@ -18,3 +18,7 @@
    (equal (apply #'next-offset (nth 2 +steps+)) (nth 3 +steps+))
    (equal (apply #'next-offset (nth 3 +steps+)) (nth 4 +steps+))
    (equal (apply #'next-offset (nth 4 +steps+)) (nth 5 +steps+))))
+
+(deftest test-count-steps ()
+  (check
+   (eq 5 (count-steps 0 '(0 3 0 1 -3)))))
