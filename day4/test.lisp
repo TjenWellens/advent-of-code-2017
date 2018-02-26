@@ -1,6 +1,6 @@
-(load "~/development/_advent-of-code/2017/day4/unit-test.lisp")
+(load "unit-test.lisp")
 
-(load "~/development/_advent-of-code/2017/day4/day4.lisp")
+(load "day4.lisp")
 
 (deftest test-sort-letters-in-words ()
   (check
@@ -31,4 +31,4 @@
     (test-sort-letters-in-words)
     (test-check-passphrase-enhanced)))
 
-; (test-passphrase-suite)
+; (test-suite)

@@ -1,3 +1,4 @@
+(load "~/quicklisp/setup.lisp")
 (ql:quickload "cl-utilities")
 
 (defun has-duplicates (list)
@@ -21,5 +22,5 @@
       while line count (funcall check-p line))))
 
 
-; (count-correct-passphrases "/tmp/dev/day-4-input.txt")
-; (count-correct-passphrases "/tmp/dev/day-4-input.txt" #'check-passphrase-enhanced)
+; (count-correct-passphrases "input.txt")
+; (count-correct-passphrases "input.txt" #'check-passphrase-enhanced)
