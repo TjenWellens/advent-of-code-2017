@@ -10,15 +10,18 @@
           (replace (copy-list offsets) (list (1+ current-value)) :start1 index))))
 
 (defun count-steps (index offsets)
-  (if index
-    (1+ (apply #'count-steps (next-offset index offsets)))
-    0))
+  (loop
+    for (i offs) = (list index offsets) then (next-offset i offs)
+    while i
+    counting i
+    do (print i)))
 
 (defun file-to-list (path)
   (with-open-file (input path)
     (loop for line = (read input nil)
       while line collect line)))
 
+; 396086
 (defun solution ()
   (let ((index 0)
         (offsets (file-to-list "input.txt")))
