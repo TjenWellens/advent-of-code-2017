@@ -2,22 +2,19 @@
 
 (load "code.lisp")
 
-(defun mk-offs (index offsets)
-  (list index (copy-list offsets)))
-
 (defparameter +steps+ (list
-                       (mk-offs 0   '(0 3 0 1 -3))
-                       (mk-offs 0   '(1 3 0 1 -3))
-                       (mk-offs 1   '(2 3 0 1 -3))
-                       (mk-offs 4   '(2 4 0 1 -3))
-                       (mk-offs 1   '(2 4 0 1 -2))
-                       (mk-offs nil '(2 5 0 1 -2))
+                       (mk-offset 0   '(0 3 0 1 -3))
+                       (mk-offset 0   '(1 3 0 1 -3))
+                       (mk-offset 1   '(2 3 0 1 -3))
+                       (mk-offset 4   '(2 4 0 1 -3))
+                       (mk-offset 1   '(2 4 0 1 -2))
+                       (mk-offset nil '(2 5 0 1 -2))
                        ))
 
 (defun get-offs (index)
   (destructuring-bind
    (i offs) (nth index +steps+)
-   (mk-offs i offs)))
+   (mk-offset i offs)))
 
 (deftest test-next-offset ()
   (check
