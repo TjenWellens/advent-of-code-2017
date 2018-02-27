@@ -46,7 +46,7 @@
 (defun next-value-part-2 (current-value)
   (+ current-value (if (>= current-value 3) -1 1)))
 
-; ???
+; 28675390
 (defun solution-part-2 ()
   (let ((index 0)
         (offsets (mk-offsets (file-to-offsets "input.txt"))))
