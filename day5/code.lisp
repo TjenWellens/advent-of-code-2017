@@ -1,13 +1,13 @@
-(defun next-index (index current-value offset)
+(defun next-index (index current-value offsets)
   (let ((result (+ index current-value)))
-    (if (< result (length offset))
+    (if (< result (length offsets))
       result
       nil)))
 
 (defun next-value (current-value)
   (1+ current-value))
 
-(defun mk-offset (index offsets)
+(defun mk-step (index offsets)
   (list index offsets))
 
 (defun update-offset (index value offsets)
@@ -16,15 +16,15 @@
 (defun get-offset (index offsets)
   (nth index offsets))
 
-(defun next-offset (index offsets &optional (next-value #'next-value))
+(defun next-step (index offsets &optional (next-value #'next-value))
   (let ((current-value (get-offset index offsets)))
-    (mk-offset
+    (mk-step
      (next-index index current-value offsets)
      (update-offset index (funcall next-value current-value) offsets))))
 
 (defun count-steps (index offsets &optional (next-value #'next-value))
   (loop
-    for (i offs) = (mk-offset index offsets) then (next-offset i offs next-value)
+    for (i offs) = (mk-step index offsets) then (next-step i offs next-value)
     while i
     counting i))
 
