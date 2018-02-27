@@ -4,6 +4,9 @@
       result
       nil)))
 
+(defun mk-offsets (numbers)
+  (coerce numbers 'array))
+
 (defun next-value (current-value)
   (1+ current-value))
 
@@ -11,10 +14,11 @@
   (list index offsets))
 
 (defun update-offset (index value offsets)
-  (replace offsets (list value) :start1 index))
+  (setf (aref offsets index) value)
+  offsets)
 
 (defun get-offset (index offsets)
-  (nth index offsets))
+  (aref offsets index))
 
 (defun next-step (index offsets &optional (next-value #'next-value))
   (let ((current-value (get-offset index offsets)))
@@ -36,7 +40,7 @@
 ; 396086
 (defun solution ()
   (let ((index 0)
-        (offsets (file-to-offsets "input.txt")))
+        (offsets (mk-offsets (file-to-offsets "input.txt"))))
     (count-steps index offsets)))
 
 (defun next-value-part-2 (current-value)
@@ -45,5 +49,5 @@
 ; ???
 (defun solution-part-2 ()
   (let ((index 0)
-        (offsets (file-to-offsets "input.txt")))
+        (offsets (mk-offsets (file-to-offsets "input.txt"))))
     (count-steps index offsets #'next-value-part-2)))
