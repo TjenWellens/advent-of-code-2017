@@ -7,10 +7,13 @@
 (defun next-value (current-value)
   (1+ current-value))
 
+(defun update-offset (index value offsets)
+  (replace offsets (list value) :start1 index))
+
 (defun next-offset (index offsets &optional (next-value #'next-value))
   (let* ((current-value (nth index offsets)))
     (list (next-index index current-value offsets)
-          (replace offsets (list (funcall next-value current-value)) :start1 index))))
+          (update-offset index (funcall next-value current-value) offsets))))
 
 (defun count-steps (index offsets &optional (next-value #'next-value))
   (loop
