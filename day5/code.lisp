@@ -8,7 +8,7 @@
   (1+ current-value))
 
 (defun update-offset (index value offsets)
-  (replace offsets (list value) :start1 index))
+  (replace (copy-list offsets) (list value) :start1 index))
 
 (defun get-offset (index offsets)
   (nth index offsets))
