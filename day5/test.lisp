@@ -21,7 +21,8 @@
 
 (deftest test-count-steps ()
   (check
-   (eq 5 (count-steps 0 '(0 3 0 1 -3)))))
+   (eq 5 (count-steps 0 '(0 3 0 1 -3)))
+   (eq 10 (count-steps 0 '(0 3 0 1 -3) #'next-value-part-2))))
 
 (deftest test-suite ()
   (combine-results

@@ -29,3 +29,12 @@
   (let ((index 0)
         (offsets (file-to-list "input.txt")))
     (count-steps index offsets)))
+
+(defun next-value-part-2 (current-value)
+  (+ current-value (if (>= current-value 3) -1 1)))
+
+; ???
+(defun solution-part-2 ()
+  (let ((index 0)
+        (offsets (file-to-list "input.txt")))
+    (count-steps index offsets #'next-value-part-2)))
