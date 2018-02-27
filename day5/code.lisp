@@ -10,14 +10,13 @@
 (defun next-offset (index offsets &optional (next-value #'next-value))
   (let* ((current-value (nth index offsets)))
     (list (next-index index current-value offsets)
-          (replace (copy-list offsets) (list (funcall next-value current-value)) :start1 index))))
+          (replace offsets (list (funcall next-value current-value)) :start1 index))))
 
 (defun count-steps (index offsets &optional (next-value #'next-value))
   (loop
     for (i offs) = (list index offsets) then (next-offset i offs next-value)
     while i
-    counting i
-    do (print i)))
+    counting i))
 
 (defun file-to-list (path)
   (with-open-file (input path)
