@@ -8,7 +8,7 @@
   (1+ current-value))
 
 (defun mk-offset (index offsets)
-  (list index (copy-list offsets)))
+  (list index offsets))
 
 (defun update-offset (index value offsets)
   (replace offsets (list value) :start1 index))

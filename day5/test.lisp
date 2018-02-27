@@ -13,8 +13,8 @@
 
 (defun get-offs (index)
   (destructuring-bind
-   (i offs) (nth index +steps+)
-   (mk-offset i offs)))
+   (ind offs) (nth index +steps+)
+   (mk-offset ind (copy-list offs))))
 
 (deftest test-next-offset ()
   (check
